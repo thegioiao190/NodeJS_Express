@@ -1,7 +1,10 @@
+a(href="/users/create") create
 h1 USERS
 form(action="/users/search",method="GET")
   input(type='text', name="q")
   button Search
 ul
   each obj in user
-    li= obj.name
+    li
+      span=obj.name
+      a(href="user/"+obj.id) View

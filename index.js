@@ -1,34 +1,26 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+var express = require('express');
+var app = express();
+var port = 3000;
+
+var userRoute = require("./route/user.route");
+var db = require("./db");
+var DB= new db();
 
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-
-var users = [ {id:1,  name:"Pham Doan Hong Minh"},
-              {id:2,  name:"Tran Phuong Nhung"},
-              {id:3,  name:"Tran Phuong Quyen"},
-              {id:4,  name:"Pham Doan Nga"},
-              {id:5,  name:"Doan Thi Than"},
-              {id:6,  name:"Huynh Minh Khang"}]
+app.use("/users",userRoute);
 
 app.get('/', (req, res) => {
   res.render('index',{name:"Coder"});
 });
 
-app.get('/users', (req, res) => {
-  res.render('user',{user:users});
-});
-
-app.get('/users/search', (req, res) => {
-  var q = req.query.q;
-  var userListQuery = users.filter(function(x){
-    return x.name.toLowerCase().indexOf(q) >= 0;
-  });
-  console.log(q);
-  res.render('user',{user:userListQuery});
-});
+//Baif 7 view user
+app.get("/user/:id",(req,res)=>{
+  var id = req.params.id;
+  console.log(DB.db);
+  res.render("viewUser",{name:DB.db.find(function(x){return x.id === id}).name});
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
