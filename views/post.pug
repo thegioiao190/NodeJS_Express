@@ -1,6 +1,7 @@
-h1 Tao Moi User
-form(method="POST",action="/users/create")
-	label Name
-	input(name="name")
-	br
-	button Create
+extends ../pug/common
+block content
+	h1 Tao Moi User
+	form(method="POST",action="/users/create")
+		label Name
+		input(name="name")
+		button(class="btn btn-primary ms-1") Create
