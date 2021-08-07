@@ -22,6 +22,12 @@ app.get("/user/:id",(req,res)=>{
   res.render("viewUser",{name:DB.db.find(function(x){return x.id === id}).name});
 })
 
+
+//Baif 11 static file
+app.use(express.static("public"));
+//từ giờ ta có thể gỏ tên file trong thư muc để truy cập file đó ở bất cứ đâu
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });
