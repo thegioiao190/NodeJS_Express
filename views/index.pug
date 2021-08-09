@@ -1,7 +1,9 @@
 extends ../pug/common
 block content
-	p hello #{name}
-	a(href='users') link
-	a(href='users/create') create
-	br
-	img(src="/image.jpeg" class="img-thumbnail w-25 h-25")
+	div.d-flex.align-items-center.flex-column.mt-3
+		p.h2 hello #{name}
+		div.d-flex
+			a.btn.btn-primary.d-inline(href='users') USER
+			a.btn.btn-primary.d-inline.ms-1(href='users/create') CREATE
+		br
+		img(src="/image.jpeg" class="img-thumbnail w-25 h-25")

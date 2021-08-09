@@ -1,12 +1,29 @@
 extends ../pug/common
 block content
-  a(href="/users/create") create
-  h1 USERS
-  form(action="/users/search",method="GET")
-    input(type='text', name="q")
-    button Search
-  ul
-    each obj in user
-      li
-        span=obj.name
-        a(href="user/"+obj.id) View
+  div.container
+    div.row
+      form.form-inline(action="/users/search",method="GET")
+        input.form-control.mr-sm-2(type='search',placeholder='Search', aria-label='Search',name="q")
+        button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+    ul.list-group
+      li.list-group-item.active
+        div.row
+          div.col-2
+            span ID
+          div.col-6
+            span Name
+          div.col-2
+            span Phone
+          div.col-2
+            span Function
+      each obj in user
+        li.list-group-item.list-group-item-action
+          div.row
+            div.col-2
+              span=obj.id
+            div.col-6
+              span=obj.name
+            div.col-2
+              span=obj.phone
+            div.col-2
+              a(href="/user/"+obj.id) VIEW

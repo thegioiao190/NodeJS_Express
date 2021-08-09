@@ -3,8 +3,7 @@ var app = express();
 var port = 3000;
 
 var userRoute = require("./route/user.route");
-var db = require("./db");
-var DB= new db();
+var DB = require("./db");
 
 app.set('view engine', 'pug');
 app.set('views', './views');

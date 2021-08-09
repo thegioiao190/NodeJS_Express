@@ -2,17 +2,16 @@ var shortid = require("shortid");
 var fs = require("fs");
 
 var db = require("../db");
-var DB = new db();
 
 module.exports.index = (req, res) => {
-  console.log(DB.db);
-  res.render('user',{user:DB.db});
+  console.log(db.db);
+  res.render('user',{user:db.db});
 };
 
 module.exports.search = (req, res) => {
   var q = req.query.q;
-  var userListQuery = DB.db.filter(function(x){
-    return x.name.toLowerCase().indexOf(q) >= 0;
+  var userListQuery = db.db.filter(function(x){
+    return x.name.toLowerCase().indexOf(q.toLowerCase()) >= 0;
   });
   res.render('user',{user:userListQuery});
 };
@@ -24,7 +23,7 @@ module.exports.create = (req,res)=>{
 module.exports.postCreate = function (req, res, next) {
   var obj = req.body;
   obj.id=shortid.generate();
-  DB.db.push(obj);
-  DB.write();
+  db.db.push(obj);
+  db.dbWrite();
   res.redirect("/users");
 };
