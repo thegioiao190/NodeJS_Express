@@ -1,9 +1,12 @@
 extends ../pug/common
 block content
 	h1 Tao Moi User
+	if errors
+		each err in errors
+			.alert.alert-danger=err
 	form(method="POST",action="/users/create")
-		label Name
-		input(name="name")
-		label Phone
-		input(name="phone")
+		label(for="name") Name
+		input(id="name",name="name", value=value?value.name : "")
+		label(for="phone") Phone
+		input(id="phone", name="phone", value=value?value.phone : "" )
 		button(class="btn btn-primary ms-1") Create
