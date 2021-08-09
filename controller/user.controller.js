@@ -27,3 +27,11 @@ module.exports.postCreate = function (req, res, next) {
   db.dbWrite();
   res.redirect("/users");
 };
+
+module.exports.sendCookie = function (req,res){
+  if (typeof(req.cookies.cookieID) === "undefined"){//check xem da nhan cookie chua, mac dinh cookie neu chua nhan se la object rong {}
+    res.cookie("cookieID",shortid.generate());//server send new cookie
+    res.send("Cookie received");
+  }else
+    res.send("You has cookie: "+req.cookies.cookieID)
+}  

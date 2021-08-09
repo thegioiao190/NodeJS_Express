@@ -39,4 +39,13 @@ router.post('/create', upload.array(),Validation.ckBlankUser , controller.postCr
 
 // var user = JSON.parse(data);
 
+
+
+
+//Bai13 Cookie
+//De cai module doc cookie
+//npm install cookie-parse --save
+router.get("/getTestCookie",controller.sendCookie);
+
+
 module.exports = router;
