@@ -1,0 +1,11 @@
+extends ../pug/common
+block content
+	h1 Login User
+	if err	
+		.alert.alert-danger=err
+	form(method="POST")
+		label(for="mail") Mail
+		input(id="mail",name="mail", value=mail?mail:"")
+		label(for="pass") Password
+		input(type="password", id="pass", name="pass")
+		button(class="btn btn-primary ms-1") Login
