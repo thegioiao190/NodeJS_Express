@@ -1,3 +1,4 @@
+var md5 = require("md5");
 var db = require("../db");
 
 module.exports.checkAccout = function(req,res,next){
@@ -6,7 +7,7 @@ module.exports.checkAccout = function(req,res,next){
 	var info = db.db.find((obj)=>{return obj.mail===account.mail});
 	  if(!info){
 	    err="Account does not exits";
-	  }else if(info.pass !== account.pass){
+	  }else if(info.pass !== md5(account.pass)){
 	    err="Wrong Password";
 	  }
 	  if(err.length){
