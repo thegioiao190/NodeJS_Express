@@ -16,8 +16,7 @@ var DB = require("./db");
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-
-app.use(cookieParser());
+app.use(cookieParser("testStringRandome"));
 
 
 app.set('view engine', 'pug');
@@ -31,7 +30,7 @@ app.get('/', (req, res) => {
 });
 
 //Baif 7 view user
-app.get("/user/:id",(req,res)=>{
+app.get("/user/:id",middlewareAuth.requireAuth,(req,res)=>{
   var id = req.params.id;
   console.log(DB.db);
   res.render("viewUser",{name:DB.db.find(function(x){return x.id === id}).name});

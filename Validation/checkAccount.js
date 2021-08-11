@@ -14,6 +14,6 @@ module.exports.checkAccout = function(req,res,next){
 	    res.render('auth',{err:err,mail:account.mail})
 	    return;//de thoat ra tu day
 	  }
-	  res.cookie("userID",info.id)//set cookie
+	  res.cookie("userID",info.id,{signed:true})//set cookie
 	  next();
 }

@@ -6,5 +6,6 @@ module.exports.login = function(req,res){
 }
 
 module.exports.loginMethod = function(req,res){
+	
 	res.redirect("/");
 }

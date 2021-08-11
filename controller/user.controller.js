@@ -4,7 +4,6 @@ var fs = require("fs");
 var db = require("../db");
 
 module.exports.index = (req, res) => {
-  console.log(db.db);
   res.render('user',{user:db.db});
 };
 
