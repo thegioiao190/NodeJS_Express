@@ -1,3 +1,5 @@
+require("dotenv").config();
+console.log(process.env.SECRECT_VALUE);
 var cookieParser = require("cookie-parser");
 var express = require('express');
 var app = express();
