@@ -11,5 +11,6 @@ module.exports.ckBlankUser = function(req,res,next){
 	    res.render('post',{errors:errors,value:obj})
 	    return;//de thoat ra tu day
 	  }
+	  req.body.avatar=req.file.path.split("/").slice(1).join("/");//them ten file
 	  next();
 }

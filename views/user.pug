@@ -9,8 +9,10 @@ block content
       li.list-group-item.active
         div.row
           div.col-2
+            span Avatar
+          div.col-2
             span ID
-          div.col-6
+          div.col-4
             span Name
           div.col-2
             span Phone
@@ -20,8 +22,10 @@ block content
         li.list-group-item.list-group-item-action
           div.row
             div.col-2
+              img(src=obj.avatar, width="50")
+            div.col-2
               span=obj.id
-            div.col-6
+            div.col-4
               span=obj.name
             div.col-2
               span=obj.phone

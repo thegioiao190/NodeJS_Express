@@ -4,9 +4,15 @@ block content
 	if errors
 		each err in errors
 			.alert.alert-danger=err
-	form(method="POST",action="/users/create")
+	form(method="POST",action="/users/create", enctype="multipart/form-data")
 		label(for="name") Name
 		input(id="name",name="name", value=value?value.name : "")
+
 		label(for="phone") Phone
 		input(id="phone", name="phone", value=value?value.phone : "" )
+
+
+		label(for="avatar") Phone
+		input(id="avatar", name="avatar" type="file")
+
 		button(class="btn btn-primary ms-1") Create

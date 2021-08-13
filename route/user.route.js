@@ -3,10 +3,11 @@ var router = express.Router();
 
 var bodyParser = require('body-parser')
 var multer = require('multer') // v1.0.5
-var upload = multer() // for parsing multipart/form-data
+var upload = multer({dest:"./public/images"}) // for parsing multipart/form-data
 
 var controller = require("../controller/user.controller");
 var Validation = require("../Validation/checkBlank");
+
 
 
 
@@ -24,7 +25,11 @@ router.get("/create",controller.create);
 
 
 
-router.post('/create', upload.array(),Validation.ckBlankUser , controller.postCreate);
+router.post('/create', 
+    upload.single('avatar')
+    ,Validation.ckBlankUser , 
+    controller.postCreate
+);
 
 
 //Bai 5 ////////////////////////////NodeMon
