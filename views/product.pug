@@ -9,3 +9,9 @@ block content
 					p(class="h1")=obj.name
 					p=obj.text
 					p=obj.cost
+		dev
+			a.m-2(href="?page="+(page-2))="<="
+			a.m-2(href="?page="+(page-1))= (page-1)
+			a.m-2(href="?page="+page)=page
+			a.m-2(href="?page="+(page+1) )=(page+1)
+			a.m-2(href="?page="+(page+2) )="=>"
