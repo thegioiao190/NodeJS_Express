@@ -1,0 +1,11 @@
+extends ../pug/common
+block content
+	h1 Quan Ly San Pham
+	.container
+		.row
+			each obj in db
+				.col-3.bg-light.align-items-center.d-flex.flex-column.m-2
+					img(src=obj.img)
+					p(class="h1")=obj.name
+					p=obj.text
+					p=obj.cost

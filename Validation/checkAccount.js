@@ -4,7 +4,7 @@ var db = require("../db");
 module.exports.checkAccout = function(req,res,next){
 	var account = req.body;
 	var err="";
-	var info = db.db.find((obj)=>{return obj.mail===account.mail});
+	var info = db.db.users.find((obj)=>{return obj.mail===account.mail});
 	  if(!info){
 	    err="Account does not exits";
 	  }else if(info.pass !== md5(account.pass)){
